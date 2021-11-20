@@ -1,2 +1,0 @@
-user 123456
-administrator 123
