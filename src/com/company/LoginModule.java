@@ -19,7 +19,7 @@ class LoginModule {
         System.out.println("Welcome to the students management system, please login to your account");
         System.out.println("------------------------------------------------------------------------------------");
 
-        while(tryLogin != 0 && !auth) {
+        while (tryLogin != 0 && !auth) {
             System.out.println("------------------------------------------------------------------------------------");
             System.out.println("please enter your username:");
             username = in.nextLine();
@@ -27,7 +27,7 @@ class LoginModule {
             password = in.nextLine();
 
             if (authData.containsKey(username)) {
-                if(authData.get(username).equals(password)) {
+                if (authData.get(username).equals(password)) {
                     System.out.println("You login success");
                     auth = true;
                     return username;
@@ -39,7 +39,7 @@ class LoginModule {
             } else {
                 System.out.println("This account have not in Database");
                 tryLogin--;
-                System.out.println("Your tries have: " + + tryLogin);
+                System.out.println("Your tries have: " + +tryLogin);
             }
         }
         return null;

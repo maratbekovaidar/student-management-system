@@ -1,4 +1,4 @@
-package com.company.module;
+package com.company.model;
 
 // Student's module
 public class Student {
