@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.service.StudentsService;
+
 import java.io.*;
 
 public class Main {
@@ -7,6 +9,8 @@ public class Main {
         String user;
         LoginModule loginModule = new LoginModule();
         user = loginModule.login();
-        
+        StudentsService studentsService = new StudentsService();
+//        studentsService.set();
+        studentsService.getAll();
     }
 }
