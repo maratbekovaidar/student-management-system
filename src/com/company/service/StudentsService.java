@@ -2,6 +2,10 @@ package com.company.service;
 
 import com.company.module.Student;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.*;
 
 public class StudentsService {
@@ -86,6 +90,32 @@ public class StudentsService {
              System.out.format(leftAlignFormat, student.getId(), student.getName(), student.getGender());
          }
          System.out.format("+--------+-------------+----------+%n");
+
+         try {
+            //might to update the filename and path
+            File fout = new File("src\\com\\company\\backup_students.txt");
+            FileOutputStream fstream = new FileOutputStream(fout);
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fstream));
+
+            String [] students_info = new String[students.size()];
+
+            for (int i = 0; i < students.size(); i++) {
+                Student student = students.get(i);
+                students_info[i] = student.getId() + " " + student.getName() + " " + student.getGender();
+            }
+
+            //please keep track of the database length
+            for (int j =0; j < students.size(); j++)
+            {
+                bw.write(students_info[j]);
+                bw.newLine();
+            }
+
+            bw.close();
+            System.out.println("Students information backup in backup_students.txt file!");
+        }catch (Exception e) {
+            System.err.println("Error:"+e.getMessage());
+        }
      }
 
 
