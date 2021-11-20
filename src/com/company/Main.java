@@ -10,7 +10,6 @@ public class Main {
         LoginModule loginModule = new LoginModule();
         user = loginModule.login();
         StudentsService studentsService = new StudentsService();
-//        studentsService.set();
-        studentsService.getAll();
+
     }
 }

@@ -9,8 +9,8 @@ public class Reader {
 
         Map<String, String> auth = new HashMap<>();
 
-        String [] database = new String[10];
-        int totalLength =0;
+        String[] database = new String[10];
+        int totalLength = 0;
         try {
             // need to modify the file path and name according to your program
             FileInputStream fstream = new FileInputStream("src\\com\\company\\users.txt");
@@ -21,7 +21,7 @@ public class Reader {
             String strLine;
 
             //Read File Line By Line
-            while ((strLine = br.readLine()) != null)   {
+            while ((strLine = br.readLine()) != null) {
                 // Print the content on the console
 //                System.out.println ("Current line:"+strLine);
                 database[totalLength] = strLine;
@@ -39,7 +39,7 @@ public class Reader {
 
             return auth;
         } catch (Exception e) {
-            System.err.println("Error:"+e.getMessage());
+            System.err.println("Error:" + e.getMessage());
             return null;
         }
 //
