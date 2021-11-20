@@ -58,6 +58,29 @@ public class StudentsService {
         }
     }
 
+    public void update() {
+        int id;
+        int id_verify;
+        String name;
+        String gender;
+        System.out.println("Please input student' id that edited: ");
+        id = in.nextInt();
+        if (getStudent(id) != null) {
+            System.out.println("Please need to verify student's information for edit");
+            System.out.println("Please input id of student: ");
+            id_verify = in.nextInt();
+            System.out.println("Please input name of student: ");
+            name = in.next();
+            System.out.println("Please input gender of student(male/female): ");
+            gender = in.next();
+            students.remove(getStudent(id));
+            students.add(new Student(id_verify, name, gender));
+            System.out.println("Student edited success!");
+        } else {
+            System.out.println("Don't find student with this ID!");
+        }
+    }
+
     public void delete() {
         int id;
         int id_verify;

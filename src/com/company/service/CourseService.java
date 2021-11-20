@@ -1,5 +1,4 @@
 package com.company.service;
-
 import com.company.model.Course;
 
 import java.io.BufferedWriter;
@@ -10,7 +9,7 @@ import java.util.*;
 
 public class CourseService {
     Scanner sc = new Scanner(System.in);
-    private List<Course> courses = new ArrayList<>();
+    private final List<Course> courses = new ArrayList<>();
 
     public Course getC (Integer id){
         for(Course course : courses)
