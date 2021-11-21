@@ -11,6 +11,10 @@ public class Course {
         this.credits = credits;
     }
 
+    public Course(){
+
+    }
+
     public Integer getId() {
         return id;
     }

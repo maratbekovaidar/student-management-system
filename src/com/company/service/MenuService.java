@@ -4,8 +4,9 @@ package com.company.service;
 import java.util.Scanner;
 
 public class MenuService {
-    StudentsService studentsService = new StudentsService();
-    CourseService courseService = new CourseService();
+    StudentsServiceImplementation studentsServiceImplementation = new StudentsServiceImplementation();
+    CourseService courseService = new CourseServiceImplementation();
+    StudentScoreService studentScoreService = new StudentScoreServiceImpl();
     Scanner in = new Scanner(System.in);
 
     public MenuService() {
@@ -66,15 +67,15 @@ public class MenuService {
         int cmd;
 
         System.out.println();
-        String leftAlignFormat = "| %-6s | %-62s |%n";
+        String leftAlignFormat = "| %-6s | %-64s |%n";
         String[][] commands = new String[10][2];
 
         commands[0][0] = "1";
         commands[0][1] = "To Get student information";
         commands[1][0] = "2";
-        commands[1][1] = "To Get Add students to data";
+        commands[1][1] = "To Add students to data";
         commands[2][0] = "3";
-        commands[2][1] = "To To Delete student from data";
+        commands[2][1] = "To Delete student from data";
         commands[3][0] = "4";
         commands[3][1] = "To Update students info from data";
         commands[4][0] = "5";
@@ -83,9 +84,9 @@ public class MenuService {
         commands[5][1] = "To Go Main menu";
 
         System.out.println("Students Management Module Menu");
-        System.out.format("+--------+----------------------------------------------------------------+%n");
-        System.out.format("|   ID   |                            Command                             |%n");
-        System.out.format("+--------+----------------------------------------------------------------+%n");
+        System.out.format("+--------+------------------------------------------------------------------+%n");
+        System.out.format("|   ID   |                              Command                             |%n");
+        System.out.format("+--------+------------------------------------------------------------------+%n");
         for (int i = 0; i < 6; i++) {
             System.out.format(leftAlignFormat, commands[i][0],commands[i][1]);
         }
@@ -95,23 +96,23 @@ public class MenuService {
         cmd = in.nextInt();
         switch (cmd) {
             case 1:
-                studentsService.get();
+                studentsServiceImplementation.get();
                 studentsModel();
                 break;
             case 2:
-                studentsService.set();
+                studentsServiceImplementation.set();
                 studentsModel();
                 break;
             case 3:
-                studentsService.delete();
+                studentsServiceImplementation.delete();
                 studentsModel();
                 break;
             case 4:
-                studentsService.update();
+                studentsServiceImplementation.update();
                 studentsModel();
                 break;
             case 5:
-                studentsService.getAll();
+                studentsServiceImplementation.getAll();
                 studentsModel();
                 break;
             case 0:
@@ -157,7 +158,7 @@ public class MenuService {
         cmd = in.nextInt();
         switch (cmd) {
             case 1:
-                courseService.getCourse();
+                courseService.get();
                 courseModel();
                 break;
             case 2:
@@ -187,10 +188,73 @@ public class MenuService {
     }
 
     public void courseScoreModule() {
+        int cmd;
 
+        System.out.println();
+        String leftAlignFormat = "| %-6s | %-86s |%n";
+        String[][] commands = new String[10][2];
+
+        commands[0][0] = "1";
+        commands[0][1] = "To Get student information about of course";
+        commands[1][0] = "2";
+        commands[1][1] = "To Add student's course information to data";
+        commands[2][0] = "3";
+        commands[2][1] = "To Delete student's course score from data";
+        commands[3][0] = "4";
+        commands[3][1] = "To Update student's course info from data";
+        commands[4][0] = "5";
+        commands[4][1] = "To Get all student's course information and get backup_students file with information";
+        commands[5][0] = "0";
+        commands[5][1] = "To Go Main menu";
+
+        System.out.println("Students Score Management Module Menu");
+        System.out.format("+--------+----------------------------------------------------------------------------------------+%n");
+        System.out.format("|   ID   |                                      Command                                           |%n");
+        System.out.format("+--------+----------------------------------------------------------------------------------------+%n");
+        for (int i = 0; i < 6; i++) {
+            System.out.format(leftAlignFormat, commands[i][0],commands[i][1]);
+        }
+        System.out.format("+--------+----------------------------------------------------------------------------------------+%n");
+        System.out.println();
+        System.out.println("Enter number to Select Command:");
+        cmd = in.nextInt();
+        switch (cmd) {
+            case 1:
+                studentScoreService.getScore();
+                courseScoreModule();
+                break;
+            case 2:
+                studentScoreService.addScore();
+                courseScoreModule();
+                break;
+            case 3:
+                studentScoreService.deleteScore();
+                courseScoreModule();
+                break;
+            case 4:
+                studentScoreService.updateScore();
+                courseScoreModule();
+                break;
+            case 5:
+                studentScoreService.getAllScores();
+                courseScoreModule();
+                break;
+            case 0:
+                starter();
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Incorrect command! Please again");
+                courseScoreModule();
+        }
     }
 
     public void documentation() {
-
+        System.out.println("In this project use MVC architecture patterns");
+        System.out.println("So, firstly in model directory have classes that model of our objects");
+        System.out.println("And have services that implement our models. In this classes have all functions");
+        System.out.println("And in MenuService class that constructed with using Facade pattern");
+        System.out.println("and this class navigate us to services when choose!");
+        System.out.println("In services directory have interfaces and classes those implemented his");
     }
 }
